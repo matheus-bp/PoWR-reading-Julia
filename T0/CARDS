@@ -1,0 +1,182 @@
+=======================================================================================
+BLACK HOLE SUN DONT YOU COME DONT YOU COME
+=======================================================================================
+--------------------  oldstart options  --------------------------------
+-OLDSTART 
+-OLD T 
+
+-OLD V 
+-RADGAMMA-START = OLD
+
+-OLD J
+-OLD FGRID
+
+LTESTART
+JSTART BLACKEDGE=228.
+--------------------  abundances  --------------------------------------
+xxxxxxxxxx----------xxxxxxxxxx
+HYDROGEN:  0.55    (mass fraction)
+NITROGEN:  6.000E-03 (mass fraction)
+CARBON:    2.100E-03 (mass fraction)
+OXYGEN:    4.900E-03 (mass fraction)
+SILICON:   6.650E-04 (mass fraction)
+PHOSPHORUS: 5.825E-06 (mass fraction)
+-ALUMINIUM: 7.59E-06  (mass fraction)
+ALUMINIUM: 5.564E-05 (mass fraction)
+SULFUR:    3.093E-04 (mass fraction)
+MAGNESIUM: 6.918E-04 (mass fraction)
+-NEON:      1.8E-04   (mass fraction)
+NEON:      1.26E-3   (mass fraction)
+CHLORINE:  8.20E-6   (mass fraction)
+ARGON:     7.34E-5   (mass fraction)
+POTASSIUM: 3.14E-6   (mass fraction)
+CALCIUM:   6.13E-5   (mass fraction)
+GENERIC:   1.206E-03 (mass fraction)
+--------------------  stellar parameters  ------------------------------
+DENSCON = 1 HILLIER 5
+TEFF = 20000
+LOG L = 11
+MDOT = -2
+MSTAR = 10000000
+-LOG GGRAV = 2.2
+-RMAX_IN_RSUN
+VELPAR: VFINAL (KM/S)= 10000. VMIN= 1.  BETA=1 RMAX=20000.
+
+------------------------------------------------------------------------
+VDOP=100
+VMIC=100
+--------------------  number of jobs  ----------------------------------
+JOBMAX= 20000.
+--------------------  temperature correction  --------------------------
+-NO TEMPERATURE CORRECTION
+NO TEMPERATURE CORRECTIONS WHILE COR. .GT. -1.0 1.0
+UNLUTEC LOC=0. INT=0.9 OUT=0.2 TB=0.1 SMOOTH -MONOTONIC TMIN=5000. CUTCORR=0.02
+COLI: UNLUPAR GAMMAT=1. TAUMAX=0. TAUMAX2=0.
+TMIN-START= 5000.
+--------------------  numerical parameters  ----------------------------
+RGRID: ND= 70. NDDENS= 25. NDVELO= 7.  DLOGTAU= 5.0
+-SPECIAL_OUTER_POINTS 12
+--------------------  details for iteration  ---------------------------
+AUTO GAMMA 2560 640 -1.1 0.5 0.1 0.1 1
+-AUTO GAMMA 2560. 80. -1.6 0.5 0.1 0.1 1.
+-AUTO GAMMA 0. 640. -1.1 0.5 0.1 0.1 1.
+-AUTO GAMMA 0. 320. -1.1 0.5 0.1 0.1 1.
+-AUTO GAMMA 0. 160. -1.1 0.5 0.1 0.1 1.
+-AUTO GAMMA 0. 80. -1.1 0.5 0.1 0.1 1.
+-AUTO GAMMA 0. 40. -1.1 0.5 0.1 0.1 1.
+-AUTO GAMMA 0. 10. -1.1 0.5 0.1 0.1 1.
+GAMMAD = 1. 
+XJLAPP COLI 
+-GAMMA= 999.
+-GAMMA= 100. AFTER JOB 60
+-GAMMA= 20. 
+-GAMMAC= 2. 
+-GAMMAL= 3. 
+-GAMMAR= 4.
+----------------------------------
+REDUCE 0.5
+----------------------------------
+SMALLPOP=1.E-8
+POPMIN = 1.E-28
+--------------------  convergence crierion  --------------------------------
+EPSILON = 0.01 
+FLUXEPS=0.065
+----------------------------------
+-HYDROSTATIC INTEGRATION FULL RG=0.1 SAFE
+HYDROSTATIC INTEGRATION FULL RG=0.1 EPS=0.065
+SPLITINVERSION
+
+-TAUMAX=20. FIX REDUCE=0.3 CORRLIMIT=-1.0 EPS=1.E-2
+TAUMAX=100. REDUCE=0.4 CORRLIMIT=-1.05 EPS=1.E-1 FIX
+-RUDLINES_ZERORADRATES
+-DRLINES ALL (...means: not rudimental, but full treatment in coli?)
+
+--------------------  HYDRODYNAMICAL SOLUTION ------------------------
+
+-HYDRO DAMP=0.2 BACKUP HQ=0.05 DELTA=0.01
+--HYDRO MDOTDAMP=0 FLEXM
+--HYDRO INDIN=6
+-HYDRO IPR LD
+-HYDRO MDOTTAU
+-HYDRO FQL=0.3 CL=-1.5 GCFAC=0.99999
+
+----------------------------------------------------------------------
+
+COLI: GAMMA=20.
+OPC= DIAGTAU 
+NOTDIFFUS
+
+-OB-VERS 2 COLI
+-OB-VERS 4
+-OB-VERS 4 WRCONT
+-OB-VERS 5 COLI
+
+REDISMODE= COHERENCE
+
+LASERV = 2
+
+-XJLAPP NEW 20. 11000.
+-XJCAPP NEW 20. 11000.
+-XJAPP NEWOPERATOR
+
+-NO EDDIMIX
+EDDIMIX START = 10. 
+EDDIMIX FIX = 10.
+
+-BROYDEN= 1
+BROYDEN=3
+BROYDEN RESET 1.
+
+ITMAX= 50
+-NEWWRC= 6.
+NEWWRC= 4.
+
+-NO OVERLAP
+LINES: ALL
+-DRLINES: ALL
+DELTAC= -1.
+
+NO EXTRAPOLATION
+-NO EXTRAPOLATION UNTIL CORR -0.5
+-NO EXTRAPOLATION UNTIL JOB 160.
+--------------------  output options  ----------------------------------
+PRINT ZERORATES
+PLOT_INBOX
+PLOT_POPRANGE=1.E-29
+PLOT POP GROUNDSTATES
+
+PLOT POP, "H I......1" "H I......2" "H II......"
+
+-PLOT FLUX LOGF
+PLOT FLUX FLAM 10PC 
+PLOT V
+PLOT T(LOG(R-1))
+PLOT HTOT
+PLOT UNLU
+PLOT ACC VELOCITY
+PLOT ACC
+PLOT RTAU1 
+PLOT ACCELEM 
+PLOT ACCELEM CONT
+PLOT ACCELEM LEADIONS
+PLOT GAMMA
+
+-COLI: OUTPUT ONLY
+************************************************************************
+
+
+
+
+
+
+
+
+--------------------- Levelcards ---------------------------------------
+*LEVEL    1 - 1101 SHIFT    0
+*LEVEL 1102 - 1122 SHIFT    9
+*LEVEL 1123 - 1886 SHIFT   18
+** The following lines are for iron levels
+** and can ONLY be used if both models (OLD and current)
+** have been used FEDAT with parity splitting!
+*LEVEL 1887 - 2560 SHIFT   18
+
